@@ -1,0 +1,27 @@
+<%= form_with model: @car do |form| %>
+    <div>
+      <%= form.label :make %>
+      <%= form.text_field :make, required: true %>
+    </div>
+    <div>
+      <%= form.label :model %>
+      <%= form.text_field :model, required: true %>
+    </div>
+    <div>
+      <%= form.label :year %>
+      <%= form.number_field :year, required: true %>
+    </div>
+    <div>
+      <%= form.label :odometer %>
+      <%= form.number_field :odometer, required: true %>
+    </div>
+    <div>
+      <%= form.label :price %>
+      <%= form.number_field :price, required: true %>
+    </div>
+    <div>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+      <%= form.submit "Save" %>
+<% end %>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  
+  resources :cars, only: %i[index new create edit update destroy show]
   root 'home#index'
   get '/help', to: 'help#help'
-  get '/cars', to: 'cars_list#cars_list'
-  get '/search', to: 'search#search'
+
+  get '/search', to: 'searches#searches'
+
   get '/my_searches', to: 'my_searches#my_searches'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

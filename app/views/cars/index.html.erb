@@ -1,0 +1,30 @@
+<h1>Cars List</h1>
+<h3>Total count of found cars: <%=@total_count%></h3>
+<div class="btn-group" role="group" aria-label="..." style="width: 50%;">
+  <%= link_to 'Price Asc', cars_path(request.query_parameters.merge({:sort_type => "price"}).merge({:sort_direction => "asc"})), class: "btn btn-outline-dark" %>
+  <%= link_to 'Price Desc', cars_path(request.query_parameters.merge({:sort_type => "price"}).merge({:sort_direction => "desc"})), class: "btn btn-outline-dark" %>
+  <%= link_to 'Date Added Asc', cars_path(request.query_parameters.merge({:sort_type => "created_at"}).merge({:sort_direction => "asc"})), class: "btn btn-outline-dark" %>
+  <%= link_to 'Date Added Desc', cars_path(request.query_parameters.merge({:sort_type => "created_at"}).merge({:sort_direction => "desc"})), class: "btn btn-outline-dark" %>
+</div>
+
+<% @cars.each do |cars| %>
+<div class="col">
+  <div class="card" style="width: 50%;">
+    <div class="border border-dark">
+    <div class="card-body">
+      <p class="card-text">Id: <%=cars.id%></p>
+      <p class="card-text">Make: <%=cars.make%></p>
+      <p class="card-text">Model: <%=cars.model%></p>
+      <p class="card-text">Year: <%=cars.year%></p>
+      <p class="card-text">Odometer: <%=cars.odometer%></p>
+      <p class="card-text">Price: <%=cars.price%></p>
+      <p class="card-text">Description: <%=cars.description%></p>
+      <p class="card-text">Date added: <%=cars.created_at.strftime('%Y-%m-%d')%></p>
+      <%= link_to 'Show', car_path(cars) %> | <%= link_to 'Edit', edit_car_path(cars) %> |
+      <%= link_to 'Delete', car_path(cars), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }  %>
+    </div>
+  </div>
+  </div>
+</div>
+<br/>
+<% end %>
